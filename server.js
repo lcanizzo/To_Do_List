@@ -18,11 +18,12 @@ app.set('view engin', 'handlebars');
 
 // R O U T I N G 
 const api_routes = require('./routes/api_routes.js');
-app.use('/api', api_routes);
+api_routes(app, __dirname);
 
 const html_routes = require('./routes/html_routes.js');
-app.use('/', html_routes);
+html_routes(app, __dirname);
 
+// L I S T E N I N G
 app.listen(PORT, ()=>{
     console.log('listening on port:', PORT);
 })

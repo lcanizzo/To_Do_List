@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To-Do</title>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -17,7 +22,11 @@
                         <h4 class="card-title">Tasks</h4>
                     </div>
                     <div class="card-body">
-                        <input class="form-control form-control-lg" type="text" placeholder="Add a task">                                                    
+                        <!-- <form action="/newTask" method="post" Content-Type='application/json'> -->
+                            <form>
+                                <input id="task-input" name="newTask" class="form-control form-control-lg" type="text" placeholder="New Task">
+                            </form>
+                        <!-- </form> -->
                     </div>
                 </div>
             </div>
@@ -33,4 +42,16 @@
         </div>
     </div>
 </body>
+<script>
+    $("#task-input").on('keyup', (e) => {
+        if (e.which == 13) {
+            e.preventDefault();
+            let newTask = {
+                newTask: $('#task-input').val().trim()
+            };
+            $("#task-input").val("");
+            $.post("/newTask", newTask)
+        }
+    });
+</script>
 </html>
