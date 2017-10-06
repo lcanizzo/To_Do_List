@@ -50,8 +50,16 @@
                 newTask: $('#task-input').val().trim()
             };
             $("#task-input").val("");
-            $.post("/newTask", newTask)
+            $.post("/newTask", newTask).done((data, error)=>{
+                console.log(data);
+                console.log(error);
+                // Post would send input to server app.post("/newTask") to handle data
+                // .done would take returned array and with new input and add it to the to-do div as a series of divs or buttons for each item in the array with a standard / incrementing class related to name or data-id of the button.
+            })
         }
     });
+
+    //On click event for the class of divs that were created in the previous function.
+        // take a data value for the button / div clicked using a get request for the array, remove the related index server side and push it to the completed array, render both arrays again to the two divs.
 </script>
 </html>
