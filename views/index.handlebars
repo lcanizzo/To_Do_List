@@ -1,0 +1,41 @@
+ <div class="col">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Tasks</h4>
+        </div>
+        <div class="card-body">
+            <form id="task-form">
+                <input id="task-input" name="newTask" class="form-control form-control-lg" type="text" placeholder="New Task">
+            </form>
+            <ul>
+                {{#each to-do}}
+                <li>
+                    <div>
+                        {{this.newTask}}
+                        <button data-id="{{this.id}}" class="mark-complete">Mark Complete</button>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Completed</h4>
+        </div>
+        <div class="card-body">
+            <ul>
+                {{#each completed}}
+                <li>
+                    <div>
+                        {{this.completedTask}}
+                        <button data-id="{{this.id}}" class="mark-unfinished">Mark Unfinished</button>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,12 +1,19 @@
 const toDo = require('../data/to_do.js');
 const express = require('express');
 const path = require('path');
+const connection = require('../config/connection.js');
 
 const html_routing = (app, __dirname)=>{
     app.get('/', (req,res)=>{
         console.log('routed to html');
-        // res.render('index.handlebars');
-        res.sendFile(path.join(__dirname, "starter.html"));        
+        connection.query("SELECT * FROM to_dos;", (err,data)=>{
+            if(err){
+                console.log("ERROR:\n", err);
+                return res.status(500).end();
+            }
+            res.render('index.handlebars', {to_dos: data});            
+        })
+        // res.sendFile(path.join(__dirname, "starter.html"));        
     })
 }
 

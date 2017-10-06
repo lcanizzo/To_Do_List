@@ -23,7 +23,7 @@
                     </div>
                     <div class="card-body">
                         <!-- <form action="/newTask" method="post" Content-Type='application/json'> -->
-                            <form>
+                            <form id="task-form">
                                 <input id="task-input" name="newTask" class="form-control form-control-lg" type="text" placeholder="New Task">
                             </form>
                         <!-- </form> -->
@@ -43,20 +43,19 @@
     </div>
 </body>
 <script>
-    $("#task-input").on('keyup', (e) => {
-        if (e.which == 13) {
+    $("#task-form").on('submit', (e) => {
             e.preventDefault();
             let newTask = {
-                newTask: $('#task-input').val().trim()
+                newTask: $('#task-form [name=newTask]').val().trim()
             };
             $("#task-input").val("");
-            $.post("/newTask", newTask).done((data, error)=>{
+            $.post("/newTask", newTask).then((data, error)=>{
                 console.log(data);
                 console.log(error);
                 // Post would send input to server app.post("/newTask") to handle data
                 // .done would take returned array and with new input and add it to the to-do div as a series of divs or buttons for each item in the array with a standard / incrementing class related to name or data-id of the button.
+                // location.reload();
             })
-        }
     });
 
     //On click event for the class of divs that were created in the previous function.
