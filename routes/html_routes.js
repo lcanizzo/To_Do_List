@@ -1,4 +1,3 @@
-const toDo = require('../data/to_do.js');
 const express = require('express');
 const path = require('path');
 const connection = require('../config/connection.js');
@@ -14,8 +13,7 @@ const html_routing = (app, __dirname)=>{
             console.log("To-Dos DATA:\n", data);
             res.render('index.handlebars', {to_dos: data});            
         })
-        // res.sendFile(path.join(__dirname, "starter.html"));        
-    })
+    });
 }
 
 module.exports= html_routing;
