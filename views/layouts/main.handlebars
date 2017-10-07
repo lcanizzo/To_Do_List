@@ -27,7 +27,8 @@
                 newTask: $('#task-form [name=newTask]').val().trim()
             };
             $("#task-input").val("");
-            $.post("/newTask", newTask).then((data, error)=>{
+            $.post("/newTask", newTask)
+            .then((data, error)=>{
                 console.log(data);
                 console.log(error);
                 location.reload();
@@ -40,12 +41,13 @@
         console.log(e.target);
         let id = $(e.target).attr("taskid");
         console.log("ID:", id);
-        $.get('/deleteTask/'+id 
-        ).then(
+        let finishedTask = $(e.target).attr("name");
+        $.get('/deleteTask/'+id, finishedTask)
+        .then(
             (data,error)=>{
+                location.reload();
                 console.log(data);
                 console.log(error);
-                location.reload();
             }
         )
     })
