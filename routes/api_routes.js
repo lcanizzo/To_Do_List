@@ -19,7 +19,6 @@ const api_routing = (app, __dirname)=>{
     // Delete an existing task
     app.get('/deleteTask/:id', (req,res)=>{
         //Delete task from to_dos
-        let finishedTask = req.body;
         console.log('P A R A M S  I D:\n', req.params.id)
         connection.query("DELETE FROM to_dos WHERE id=?", [req.params.id],(err,result)=>{
             if(err){
@@ -35,16 +34,6 @@ const api_routing = (app, __dirname)=>{
                 res.json(result).end();
             }
         })
-        //Insert task into completed
-        console.log("Finished Task:\n", finishedTask);            
-        connection.query("INSERT INTO completed (finishedTask) VALUES (?)", [finishedTask], (err, result)=>{
-            if(err){
-                console.log("ERROR:\n", err);
-                return res.status(500).end();
-            }
-            console.log("R E S U L T:\n", { id: result.insertId });
-            res.json({ id: result.insertId });
-        });
     });
 };
 

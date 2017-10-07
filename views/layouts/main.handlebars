@@ -36,13 +36,12 @@
     });
 
 
-    $(".mark-complete").on("click", (e)=>{
+    $(".delete").on("click", (e)=>{
         e.preventDefault();
         console.log(e.target);
         let id = $(e.target).attr("taskid");
         console.log("ID:", id);
-        let finishedTask = $(e.target).attr("name");
-        $.get('/deleteTask/'+id, finishedTask)
+        $.get('/deleteTask/'+id)
         .then(
             (data,error)=>{
                 location.reload();

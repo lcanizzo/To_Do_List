@@ -13,6 +13,7 @@
                     <div>
                         {{this.newTask}}
                         <button taskid="{{this.id}}" name="{{this.newTask}}" class="mark-complete">Mark Complete</button>
+                        <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete">X</button>
                     </div>
                 </li>
                 {{/each}}
@@ -32,6 +33,7 @@
                     <div>
                         {{this.completedTask}}
                         <button taskid="{{this.id}}" id="mark-unfinished">Mark Unfinished</button>
+                        <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete">X</button>
                     </div>
                 </li>
                 {{/each}}

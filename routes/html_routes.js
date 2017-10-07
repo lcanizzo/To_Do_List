@@ -12,7 +12,8 @@ const html_routing = (app, __dirname)=>{
             }
             console.log("To-Dos DATA:\n", data);
             res.render('index.handlebars', {to_dos: data});            
-        })
+        });
+        
     });
 }
 
