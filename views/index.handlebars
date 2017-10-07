@@ -9,13 +9,15 @@
             </form>
             <ul>
                 {{#each to_dos}}
-                <li>
-                    <div>
-                        {{this.newTask}}
-                        <button taskid="{{this.id}}" name="{{this.newTask}}" class="mark-complete">Mark Complete</button>
-                        <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete">X</button>
-                    </div>
-                </li>
+                    {{#unless completed}}
+                    <li>
+                        <div>
+                            {{this.newTask}}
+                            <button taskid="{{this.id}}" name="{{this.newTask}}" class="mark-complete">Mark Complete</button>
+                            <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete">X</button>
+                        </div>
+                    </li>
+                    {{/unless}}
                 {{/each}}
             </ul>
         </div>
@@ -28,14 +30,16 @@
         </div>
         <div class="card-body">
             <ul>
-                {{#each completed}}
-                <li>
-                    <div>
-                        {{this.completedTask}}
-                        <button taskid="{{this.id}}" id="mark-unfinished">Mark Unfinished</button>
-                        <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete">X</button>
-                    </div>
-                </li>
+                {{#each to_dos}}
+                    {{#if completed}}
+                    <li>
+                        <div>
+                            {{this.newTask}}
+                            <button taskid="{{this.id}}" id="mark-unfinished">Mark Unfinished</button>
+                            <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete">X</button>
+                        </div>
+                    </li>
+                    {{/if}}
                 {{/each}}
             </ul>
         </div>

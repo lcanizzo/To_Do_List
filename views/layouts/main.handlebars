@@ -21,6 +21,7 @@
     </div>
 </body>
 <script>
+    //Add a new task
     $("#task-form").on('submit', (e) => {
             e.preventDefault();
             let newTask = {
@@ -29,24 +30,39 @@
             $("#task-input").val("");
             $.post("/newTask", newTask)
             .then((data, error)=>{
-                console.log(data);
-                console.log(error);
+                if(error) {
+                    console.log("ERROR:\n", error);
+                }
                 location.reload();
             })
     });
 
-
+    //Delete an existing task
     $(".delete").on("click", (e)=>{
         e.preventDefault();
-        console.log(e.target);
         let id = $(e.target).attr("taskid");
-        console.log("ID:", id);
         $.get('/deleteTask/'+id)
         .then(
             (data,error)=>{
+                if(error) {
+                    console.log("ERROR:\n", error);
+                }
                 location.reload();
-                console.log(data);
-                console.log(error);
+            }
+        )
+    })
+
+    //Mark a task as complete
+    $(".mark-complete").on("click", (e)=>{
+        e.preventDefault();
+        let id = $(e.target).attr("taskid");
+        $.get('/completeTask/'+id)
+        .then(
+            (data,error)=>{
+                if(error) {
+                    console.log("ERROR:\n", error);
+                }
+                location.reload();
             }
         )
     })
