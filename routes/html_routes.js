@@ -11,6 +11,7 @@ const html_routing = (app, __dirname)=>{
                 console.log("ERROR:\n", err);
                 return res.status(500).end();
             }
+            console.log("To-Dos DATA:\n", data);
             res.render('index.handlebars', {to_dos: data});            
         })
         // res.sendFile(path.join(__dirname, "starter.html"));        
