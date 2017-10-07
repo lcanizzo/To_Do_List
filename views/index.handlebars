@@ -12,9 +12,15 @@
             {{#each to_dos}}
                 {{#unless completed}}
                 <li class="list-group-item">
-                    {{this.newTask}}
-                    <button taskid="{{this.id}}" name="{{this.newTask}}" class="mark-complete btn btn-success">Completed</button>
-                    <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete btn btn-danger">X</button>
+                    <div class="row">
+                        <div class="task-col col align-self-center">
+                            {{this.newTask}}
+                        </div>
+                        <div class="buttonDiv col-4">
+                            <button taskid="{{this.id}}" name="{{this.newTask}}" class="mark-complete btn btn-success">Completed</button>
+                            <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete btn btn-danger align-self-start">X</button>
+                        </div>
+                    </div>
                 </li>
                 {{/unless}}
             {{/each}}
@@ -30,9 +36,15 @@
             {{#each to_dos}}
                 {{#if completed}}
                 <li class="list-group-item">
-                    {{this.newTask}}
-                    <button taskid="{{this.id}}" class="mark-unfinished btn btn-warning">Unfinished</button>
-                    <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete btn btn-danger">X</button>
+                    <div class="row">
+                        <div class="task-col col align-self-center">
+                            {{this.newTask}}
+                        </div>
+                        <div class="buttonDiv col-4">
+                            <button taskid="{{this.id}}" class="mark-unfinished btn btn-warning">Unfinished</button>
+                            <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete btn btn-danger align-self-start">X</button>
+                        </div>
+                    </div>
                 </li>
                 {{/if}}
             {{/each}}

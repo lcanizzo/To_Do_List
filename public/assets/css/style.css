@@ -1,0 +1,17 @@
+.delete {
+    font-size: 11px;
+    padding: 3px;
+}
+
+.buttonDiv {
+    float: right;
+}
+
+.task-col {
+    font-size: 25px;
+    color: #495057;
+}
+
+.card {
+    margin-top: 15px;
+}
