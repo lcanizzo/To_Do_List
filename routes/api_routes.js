@@ -55,6 +55,25 @@ const api_routing = (app, __dirname)=>{
             }
         })        
     })
+
+    // Mark an existing task as unfinished
+    app.get('/unfinishedTask/:id', (req,res)=>{
+        console.log('P A R A M S  I D:\n', req.params.id)
+        connection.query("UPDATE to_dos SET completed=false WHERE id=?", [req.params.id], (err, result)=>{
+            if(err){
+                console.log("ERROR:\n", err);
+                return res.status(500).end();
+            } 
+            else if (result.changedRows == 0){
+                console.log("No such item exists");
+                return res.status(404).end();
+            } 
+            else {
+                console.log(result);
+                res.status(200).end();
+            }
+        })        
+    })
 };
 
 module.exports = api_routing;

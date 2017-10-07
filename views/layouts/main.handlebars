@@ -50,7 +50,7 @@
                 location.reload();
             }
         )
-    })
+    });
 
     //Mark a task as complete
     $(".mark-complete").on("click", (e)=>{
@@ -65,7 +65,22 @@
                 location.reload();
             }
         )
-    })
+    });
+
+    //Mark a task as unfinished
+    $(".mark-unfinished").on("click", (e)=>{
+        e.preventDefault();
+        let id = $(e.target).attr("taskid");
+        $.get('/unfinishedTask/'+id)
+        .then(
+            (data,error)=>{
+                if(error) {
+                    console.log("ERROR:\n", error);
+                }
+                location.reload();
+            }
+        )
+    });
 
 </script>
 </html>
