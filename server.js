@@ -4,7 +4,7 @@ const path = require('path');
 // S E R V E R    S E T U P
 const app = express();
 const PORT = process.env.PORT || 8080;
-app.use(express.static(__dirname,+'/public'));
+// app.use(express.static(__dirname,+'/public'));
 
 // B O D Y P A R S E R  
 const bodyParser = require('body-parser');
