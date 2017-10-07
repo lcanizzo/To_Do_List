@@ -7,20 +7,18 @@
             <form id="task-form">
                 <input id="task-input" name="newTask" class="form-control form-control-lg" type="text" placeholder="New Task">
             </form>
-            <ul>
-                {{#each to_dos}}
-                    {{#unless completed}}
-                    <li>
-                        <div>
-                            {{this.newTask}}
-                            <button taskid="{{this.id}}" name="{{this.newTask}}" class="mark-complete">Mark Complete</button>
-                            <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete">X</button>
-                        </div>
-                    </li>
-                    {{/unless}}
-                {{/each}}
-            </ul>
         </div>
+        <ul class="list-group list-group-flush">
+            {{#each to_dos}}
+                {{#unless completed}}
+                <li class="list-group-item">
+                    {{this.newTask}}
+                    <button taskid="{{this.id}}" name="{{this.newTask}}" class="mark-complete btn btn-success">Completed</button>
+                    <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete btn btn-danger">X</button>
+                </li>
+                {{/unless}}
+            {{/each}}
+        </ul>
     </div>
 </div>
 <div class="col">
@@ -28,20 +26,16 @@
         <div class="card-header">
             <h4 class="card-title">Completed</h4>
         </div>
-        <div class="card-body">
-            <ul>
-                {{#each to_dos}}
-                    {{#if completed}}
-                    <li>
-                        <div>
-                            {{this.newTask}}
-                            <button taskid="{{this.id}}" class="mark-unfinished">Mark Unfinished</button>
-                            <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete">X</button>
-                        </div>
-                    </li>
-                    {{/if}}
-                {{/each}}
-            </ul>
-        </div>
+        <ul class="list-group list-group-flush">
+            {{#each to_dos}}
+                {{#if completed}}
+                <li class="list-group-item">
+                    {{this.newTask}}
+                    <button taskid="{{this.id}}" class="mark-unfinished btn btn-warning">Unfinished</button>
+                    <button taskid="{{this.id}}" name="{{this.newTask}}" class="delete btn btn-danger">X</button>
+                </li>
+                {{/if}}
+            {{/each}}
+        </ul>
     </div>
 </div>
