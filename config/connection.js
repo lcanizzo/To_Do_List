@@ -1,12 +1,20 @@
 // M Y S Q L   S E T U P
 
 const mysql = require('mysql');
-const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "to_do_db"
-})
+let connection;
+
+if(process.env.JAWSDB_URL) {
+    //Heroku deployment
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+  } else {
+    //local host
+    mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database: "to_do_db"
+    })
+  };
 
 connection.connect(function(err) {
     if (err) {
